@@ -1,7 +1,5 @@
 # Task 1: Ethical risk assessment
 
-*Draft for the AICS-201 Assessment 01 repository. Ratings match `02_governance/risk_register.csv` (R1 to R5). Replace with your own final wording so the repo and the report agree.*
-
 Five ethical risks were assessed, each described by cause, affected stakeholders, likely consequences and a proportionate control.
 
 ## R1: Algorithmic bias (High)
