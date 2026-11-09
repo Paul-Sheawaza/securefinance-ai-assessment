@@ -1,0 +1,3 @@
+group,flagged,flags_dependent_on_limited_history,share_dependent,precision_of_dependent_flags,precision_of_other_flags
+A,22,8,0.3636,0.75,0.8571
+B,24,14,0.5833,0.4286,1.0

@@ -1,0 +1,9 @@
+quantity,ci_low,ci_high
+fpr_A,0.05,0.4
+fpr_B,0.2,0.6
+tpr_A,0.75,1.0
+tpr_B,0.6,0.95
+fpr_gap_B_minus_A,-0.1,0.45
+tpr_gap_A_minus_B,-0.1,0.3
+fisher_p_FPR_B_vs_A,0.3008,0.3008
+fisher_p_TPR_A_vs_B,0.6614,0.6614

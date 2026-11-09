@@ -1,0 +1,9 @@
+measure,value
+fpr_gap,0.2
+tpr_gap,0.1
+fnr_gap,0.1
+flag_rate_gap,0.05
+accuracy_gap,0.15
+equalized_odds_difference,0.2
+fpr_ratio_B_over_A,2.0
+overall_accuracy,0.775

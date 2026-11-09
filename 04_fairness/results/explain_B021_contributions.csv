@@ -1,0 +1,4 @@
+feature,value,contribution,total_score
+unusual_velocity,0,0.0,0.6
+device_anomaly,1,0.35,0.6
+limited_history,1,0.25,0.6

@@ -1,0 +1,73 @@
+========================================================================
+TASK 4 - FAIRNESS AND EXPLAINABILITY ANALYSIS (SYNTHETIC DATA ONLY)
+========================================================================
+Records: 80  | Groups: ['A', 'B']  | Seed: 42
+Rule: score = 0.40*V + 0.35*D + 0.25*H ; flag if score >= 0.50 (integer arithmetic)
+
+--- Confusion matrices and rates (baseline rule) ---
+        n  tp  fn  fp  tn  fpr  tpr  fnr  flag_rate  precision  accuracy
+group                                                                   
+A      40  18   2   4  16  0.2  0.9  0.1       0.55      0.818      0.85
+B      40  16   4   8  12  0.4  0.8  0.2       0.60      0.667      0.70
+
+--- Group disparities (absolute) ---
+fpr_gap                     : 0.200
+tpr_gap                     : 0.100
+fnr_gap                     : 0.100
+flag_rate_gap               : 0.050
+accuracy_gap                : 0.150
+equalized_odds_difference   : 0.200
+fpr_ratio_B_over_A          : 2.000
+overall_accuracy            : 0.775
+
+Fairlearn not installed: cross-check skipped (not required).
+
+--- Uncertainty (n = 20 per group-label cell) ---
+Fisher exact p-value, FPR B vs A (8/20 vs 4/20): 0.301
+Fisher exact p-value, TPR A vs B (18/20 vs 16/20): 0.661
+fpr_A                               : [0.050, 0.400]
+fpr_B                               : [0.200, 0.600]
+tpr_A                               : [0.750, 1.000]
+tpr_B                               : [0.600, 0.950]
+fpr_gap_B_minus_A                   : [-0.100, 0.450]
+tpr_gap_A_minus_B                   : [-0.100, 0.300]
+share_of_resamples_FPR_B_above_A    : 0.897
+
+--- Feature prevalence by group and ground truth (1 = fraud) ---
+                    unusual_velocity  device_anomaly  limited_history
+group actual_fraud                                                   
+A     0                         0.30            0.30              0.2
+      1                         0.80            0.80              0.6
+B     0                         0.25            0.35              0.6
+      1                         0.70            0.70              0.6
+
+--- Individual decision review: record B021 ---
+         feature  value  contribution
+unusual_velocity      0          0.00
+  device_anomaly      1          0.35
+ limited_history      1          0.25
+Total score: 0.60 | threshold 0.50 | flagged: True | actual_fraud: 0 -> false positive
+
+Counterfactual check (one feature changed at a time):
+           counterfactual  new_score  flag_after_change
+set unusual_velocity to 0       0.60                  1
+  set device_anomaly to 0       0.25                  0
+ set limited_history to 0       0.35                  0
+
+--- Flags that disappear if limited_history is ignored ---
+       flagged  flags_dependent_on_limited_history  share_dependent  precision_of_dependent_flags  precision_of_other_flags
+group                                                                                                                      
+A           22                                   8            0.364                         0.750                     0.857
+B           24                                  14            0.583                         0.429                     1.000
+
+--- Candidate corrections compared on all outcomes ---
+                                fpr_A  fpr_B  tpr_A  tpr_B  fpr_gap  tpr_gap  equalized_odds_difference  total_false_positives  total_missed_fraud
+scenario                                                                                                                                          
+baseline                         0.20   0.40   0.90   0.80      0.2      0.1                        0.2                     12                   6
+M1_remove_limited_history        0.10   0.00   0.60   0.50      0.1      0.1                        0.1                      2                  18
+M2_limited_history_weight_0.10   0.15   0.15   0.75   0.65      0.0      0.1                        0.1                      6                  12
+M3_raise_threshold_to_0.65       0.15   0.15   0.75   0.65      0.0      0.1                        0.1                      6                  12
+Note: M2 and M3 flag the same records here because every feature is binary.
+
+Chart saved: figures/error_rates_and_corrections.png
+Environment: {"python": "3.14.2", "numpy": "2.5.4", "pandas": "3.1.1", "matplotlib": "3.11.2", "seed": 42, "bootstrap_resamples": 10000}

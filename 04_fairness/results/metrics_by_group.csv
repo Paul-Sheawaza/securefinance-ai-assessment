@@ -1,0 +1,3 @@
+group,n,tp,fn,fp,tn,fpr,tpr,fnr,flag_rate,precision,accuracy
+A,40,18,2,4,16,0.2,0.9,0.1,0.55,0.8182,0.85
+B,40,16,4,8,12,0.4,0.8,0.2,0.6,0.6667,0.7
