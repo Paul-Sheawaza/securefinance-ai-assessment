@@ -74,9 +74,9 @@ Equalized-odds difference = 0.20. The Fisher exact p-value for the FPR differenc
 - Collecting group attributes to test fairness must itself be reconciled with data-minimisation duties (Nigeria Data Protection Act 2023, s.24).
 - The correction scenarios are illustrations on this dataset, not validated recommendations.
 
-## AI-assistance declaration (edit to reflect your own use)
+## AI-assistance declaration
 
-> AI tools were used to help review and structure this analysis and to assist with drafting code. The student reviewed, ran and understands all code and results, and is responsible for the analysis and conclusions. *(Edit this statement so it accurately describes your own contribution before submission.)*
+> AI tools were used to help review and structure this analysis and to assist with drafting code. The student reviewed, ran and understands all code and results, and is responsible for the analysis and conclusions. 
 
 ## References
 
